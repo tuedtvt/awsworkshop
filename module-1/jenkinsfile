@@ -2,6 +2,7 @@ pipeline {
     agent any  
     environment {
         BUCKETNAME = 'tuewebbucket1'
+        ASSESSKEY = credentials('accesskeyforrootaws') 
     }
     stages {
         stage('Prepare') {
@@ -16,7 +17,8 @@ pipeline {
             steps {
                 sh '''
                     echo $PWD
-                    
+                    export AWS_ACCESS_KEY_ID=AKIARACODVBHJY2VT6MC
+                    export AWS_SECRET_ACCESS_KEY=$ASSESSKEY
                     aws s3 cp module-1/web/index.html s3://$BUCKETNAME/index.html
                 '''
             }
