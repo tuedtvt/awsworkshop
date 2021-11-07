@@ -1,5 +1,8 @@
 pipeline {
     agent any  
+    environment {
+        BUCKETNAME = tuewebbucket1
+    }
     stages {
         stage('Prepare') {
                     
@@ -13,7 +16,7 @@ pipeline {
             steps {
                 sh '''
                     echo $PWD
-                    BUCKETNAME = tuewebbucket1
+                    
                     aws s3 cp /module-1/web/index.html s3://$BUCKETNAME/index.html
                 '''
             }
