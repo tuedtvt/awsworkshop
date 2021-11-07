@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh '''
                     echo $PWD
-                    cd module-2/app/ && docker build -f Dockerfile -t servicemysfits:latest              
+                    cd module-2/app/ && docker build -f Dockerfile -t servicemysfits:latest .      
                 '''
             }
         }
