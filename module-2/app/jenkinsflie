@@ -3,6 +3,7 @@ pipeline {
     agent any  
     environment {
         PASS = credentials('dockerpassfortuedtvt') 
+        ASSESSKEY = credentials('secretaccesskeyforrootaws')
     }
     stages {
         stage('Prepare') {
@@ -30,5 +31,15 @@ pipeline {
                 '''
             }
         }
+        stage('reload ecs service'){
+            steps{
+                sh '''
+                export AWS_ACCESS_KEY_ID=AKIARACODVBHJY2VT6MC
+                export AWS_SECRET_ACCESS_KEY=$ASSESSKEY
+                aws ecs update-service --cluster webappservicecluster --service serviceofwebapp --force-new-deployment
+                '''
+            }
+        }
+    
     }
 }
