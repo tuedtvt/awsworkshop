@@ -21,7 +21,7 @@ pipeline {
                     export AWS_SECRET_ACCESS_KEY=$ASSESSKEY
                     aws s3 cp module-1/web/index.html s3://$BUCKETNAME/index.html
                     
-                    aws s3api put-bucket-policy --bucket $BUCKETNAME --policy /var/jenkins_home/workspace/coppywebtos3/module-1/aws-cli/website-bucket-policy.json
+                    aws s3api put-bucket-policy --bucket $BUCKETNAME --policy file:///var/jenkins_home/workspace/coppywebtos3/module-1/aws-cli/website-bucket-policy.json
                 '''
             }
         }
