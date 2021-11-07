@@ -26,6 +26,7 @@ pipeline {
                 sh '''
                 docker login -u tuedtvt -p $PASS
                 docker tag servicemysfits:latest tuedtvt/servicemysfits:latest
+                docker push tuedtvt/servicemysfits:latest
                 '''
             }
         }
