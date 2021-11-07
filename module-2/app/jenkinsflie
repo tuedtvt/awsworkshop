@@ -1,0 +1,32 @@
+pipeline {
+    
+    agent any  
+    environment {
+        PASS = credentials('dockerpassfortuedtvt') 
+    }
+    stages {
+        stage('Prepare') {
+                    
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+                    
+            steps {
+                sh '''
+                    echo $PWD
+                    cd module-2/app/ && docker build -f Dockerfile -t servicemysfits:latest              
+                '''
+            }
+        }
+        stage('Push') {
+            steps {
+                sh '''
+                docker login -u tuedtvt -p $PASS
+                docker tag servicemysfits:latest tuedtvt/servicemysfits:latest
+                '''
+            }
+        }
+    }

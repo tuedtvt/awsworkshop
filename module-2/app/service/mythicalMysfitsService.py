@@ -22,7 +22,10 @@ def healthCheckResponse():
 def getMysfits():
 
     # read the mysfits JSON from the listed file.
+    import os
+    path = os.path.abspath(os.getcwd())
     response = Response(open("mysfits-response.json", "rb").read())
+
 
     # set the Content-Type header so that the browser is aware that the response
     # is formatted as JSON and our frontend JavaScript code is able to
@@ -34,4 +37,4 @@ def getMysfits():
 # Run the service on the local server it has been deployed to,
 # listening on port 8080.
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
+    app.run(host="0.0.0.0", port=8088)
