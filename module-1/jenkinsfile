@@ -17,7 +17,7 @@ pipeline {
                 sh '''
                     echo $PWD
                     
-                    aws s3 cp /module-1/web/index.html s3://$BUCKETNAME/index.html
+                    aws s3 cp module-1/web/index.html s3://$BUCKETNAME/index.html
                 '''
             }
         }
