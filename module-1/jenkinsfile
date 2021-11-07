@@ -1,7 +1,7 @@
 pipeline {
     agent any  
     environment {
-        BUCKETNAME = tuewebbucket1
+        BUCKETNAME = 'tuewebbucket1'
     }
     stages {
         stage('Prepare') {
