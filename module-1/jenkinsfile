@@ -2,7 +2,7 @@ pipeline {
     agent any  
     environment {
         BUCKETNAME = 'tuewebbucket1'
-        ASSESSKEY = credentials('accesskeyforrootaws') 
+        ASSESSKEY = credentials('secretaccesskeyforrootaws') 
     }
     stages {
         stage('Prepare') {
